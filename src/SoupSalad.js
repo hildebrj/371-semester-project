@@ -7,9 +7,9 @@ function SoupSalad() {
       <header className="header">
         <h1>Soup and Salad Page!</h1>
       </header>
-      <body className="body">
+      <div className="body">
         <p>Hi from Soup Salad.</p>
-      </body>
+      </div>
 
     </div>
   );

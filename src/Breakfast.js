@@ -7,9 +7,9 @@ function Breakfast() {
       <header className="header">
         <h1>Breakfast Page!</h1>
       </header>
-      <body className="body">
+      <div className="body">
         <p>Hi from Breakfast.</p>
-      </body>
+      </div>
 
     </div>
   );

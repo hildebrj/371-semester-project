@@ -7,9 +7,9 @@ function MainEntree() {
       <header className="header">
         <h1>Entree Page!</h1>
       </header>
-      <body className="body">
+      <div className="body">
         <p>Hi from Entree.</p>
-      </body>
+      </div>
 
     </div>
   );

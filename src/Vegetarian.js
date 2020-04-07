@@ -7,9 +7,9 @@ function Vegetarian() {
       <header className="header">
         <h1>Vegetarian Page!</h1>
       </header>
-      <body className="body">
+      <div className="body">
         <p>Hi from Vegetarian.</p>
-      </body>
+      </div>
 
     </div>
   );

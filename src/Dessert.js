@@ -7,9 +7,9 @@ function Dessert() {
       <header className="header">
         <h1>Dessert Page!</h1>
       </header>
-      <body className="body">
+      <div className="body">
         <p>Hi from Dessert.</p>
-      </body>
+      </div>
 
     </div>
   );
