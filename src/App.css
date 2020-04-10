@@ -72,7 +72,9 @@ button:hover {
   border-color: #ff3300;
 }
 
-input, textarea, select {
+.normalIn,
+textarea,
+select {
   color: black;
   margin: 10px;
   text-align: center;
@@ -81,7 +83,30 @@ input, textarea, select {
   height: 25px;
 }
 
+.shortIn {
+  color: black;
+  margin: 10px;
+  text-align: center;
+  border-radius: 5px;
+  width: 50px;
+  height: 25px;
+}
+
+.medIn {
+  color: black;
+  margin: 10px;
+  text-align: center;
+  border-radius: 5px;
+  width: 90px;
+  height: 25px;
+}
+
 textarea {
   resize: none;
   height: 60px;
- }
+}
+
+.ingredientRow {
+  display: flex;
+  flex-direction: row;
+}
