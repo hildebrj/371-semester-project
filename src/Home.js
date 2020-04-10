@@ -30,12 +30,41 @@ class Home extends Component {
     });
   }
 
-  addIngredientBox = (event) => {
+  ingredientBox = (event) => {
     event.preventDefault();
-    this.setState({
-      recipeNumIngredients: this.state.recipeNumIngredients + 1
-      //recipeIngredient{this.state.recipeNumIngredients}: ""
-    });
+    let numVal = this.state.recipeNumIngredients;
+
+    if (event.target.id === 'addButton') {
+      this.setState({
+        recipeNumIngredients: this.state.recipeNumIngredients + 1
+      });
+      numVal += 1;
+    } else {
+      this.setState({
+        recipeNumIngredients: this.state.recipeNumIngredients - 1
+      });
+      numVal -= 1;
+    }
+
+    if (numVal > 1) {
+      document.getElementById('removeButton').style.visibility = 'visible';
+    } else {
+      document.getElementById('removeButton').style.visibility = 'hidden';
+    }
+
+    if (numVal < 10) {
+      document.getElementById('addButton').style.visibility = 'visible';
+    } else {
+      document.getElementById('addButton').style.visibility = 'hidden';
+    }
+  }
+
+  checkRecipeNum = (x) => {
+    if (x <= this.state.recipeNumIngredients) {
+      return 'text';
+    } else {
+      return 'hidden';
+    }
   }
 
   render() {
@@ -67,16 +96,18 @@ class Home extends Component {
 
             <label>List of ingredients: </label>
             <input type='text' maxLength='40' placeholder='Ingredient' name='recipeIngredient1' onChange={this.handleInputChange} />
-            <input type='text' maxLength='40' placeholder='Ingredient' name='recipeIngredient2' onChange={this.handleInputChange} />
-            <input type='text' maxLength='40' placeholder='Ingredient' name='recipeIngredient3' onChange={this.handleInputChange} />
-            <input type='text' maxLength='40' placeholder='Ingredient' name='recipeIngredient4' onChange={this.handleInputChange} />
-            <input type='text' maxLength='40' placeholder='Ingredient' name='recipeIngredient5' onChange={this.handleInputChange} />
-            <input type='text' maxLength='40' placeholder='Ingredient' name='recipeIngredient6' onChange={this.handleInputChange} />
-            <input type='text' maxLength='40' placeholder='Ingredient' name='recipeIngredient7' onChange={this.handleInputChange} />
-            <input type='text' maxLength='40' placeholder='Ingredient' name='recipeIngredient8' onChange={this.handleInputChange} />
-            <input type='text' maxLength='40' placeholder='Ingredient' name='recipeIngredient9' onChange={this.handleInputChange} />
-            <input type='text' maxLength='40' placeholder='Ingredient' name='recipeIngredient10' onChange={this.handleInputChange} />
-            <button type='button' onClick={this.addIngredientBox}>Add Ingredient</button>
+            <input type={this.checkRecipeNum(2)} maxLength='40' placeholder='Ingredient' name='recipeIngredient2' onChange={this.handleInputChange} />
+            <input type={this.checkRecipeNum(3)} maxLength='40' placeholder='Ingredient' name='recipeIngredient3' onChange={this.handleInputChange} />
+            <input type={this.checkRecipeNum(4)} maxLength='40' placeholder='Ingredient' name='recipeIngredient4' onChange={this.handleInputChange} />
+            <input type={this.checkRecipeNum(5)} maxLength='40' placeholder='Ingredient' name='recipeIngredient5' onChange={this.handleInputChange} />
+            <input type={this.checkRecipeNum(6)} maxLength='40' placeholder='Ingredient' name='recipeIngredient6' onChange={this.handleInputChange} />
+            <input type={this.checkRecipeNum(7)} maxLength='40' placeholder='Ingredient' name='recipeIngredient7' onChange={this.handleInputChange} />
+            <input type={this.checkRecipeNum(8)} maxLength='40' placeholder='Ingredient' name='recipeIngredient8' onChange={this.handleInputChange} />
+            <input type={this.checkRecipeNum(9)} maxLength='40' placeholder='Ingredient' name='recipeIngredient9' onChange={this.handleInputChange} />
+            <input type={this.checkRecipeNum(10)} maxLength='40' placeholder='Ingredient' name='recipeIngredient10' onChange={this.handleInputChange} />
+
+            <button type='button' onClick={this.ingredientBox} id='addButton'>Add Ingredient</button>
+            <button type='button' onClick={this.ingredientBox} id='removeButton' style={{visibility:'hidden'}}>Remove Ingredient</button>
 
             <label>Directions: </label>
             <textarea type='text' maxLength='400' placeholder='Directions' name='recipeDirections' onChange={this.handleInputChange} />
