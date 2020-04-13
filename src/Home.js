@@ -64,7 +64,9 @@ class Home extends Component {
       this.setState({
         recipeNumIngredients: this.state.recipeNumIngredients + 1
       });
+
       numVal += 1;
+
       this.setState({
         ["recipeIngNum" + numVal]: 1
       });
@@ -74,11 +76,19 @@ class Home extends Component {
       this.setState({
         ["recipeIngredient" + numVal]: ""
       });
+
     } else {
       this.setState({
         recipeNumIngredients: this.state.recipeNumIngredients - 1
       });
-      //TODO remove attributes from state here?
+
+      let r = "recipeIngNum" + numVal;
+      delete this.state[r];
+      let m = "ingredientMeasure" + numVal;
+      delete this.state[m];
+      let i = "recipeIngredient" + numVal;
+      delete this.state[i];
+
       numVal -= 1;
     }
 
