@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import firebase from './firebase.js';
 
 /** Class for the home page */
 class Home extends Component {
@@ -18,6 +19,8 @@ class Home extends Component {
       recipeCategory: "breakfast",
       recipeNumIngredients: 1
     }
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.submit = this.submit.bind(this);
   }
 
   /** Method submitting the form */
@@ -27,8 +30,7 @@ class Home extends Component {
 
     // Checking fields, border is red if empty
     let allGood = true;
-    let x;
-    for (x in this.state) {
+    for (let x in this.state) {
       if (this.state[x] === "") {
         document.getElementById(x).style.borderColor = 'red';
         allGood = false;
@@ -42,7 +44,27 @@ class Home extends Component {
 
     // Call to database
     if (allGood) {
-      // This is where call to DB goes.
+      const recipeRef = firebase.database().ref('recipe');
+      const recipe = {};
+      for (let i in this.state) {
+        recipe[i] = this.state[i];
+      }
+
+      console.log(recipe);
+      recipeRef.push(recipe);
+      this.setState({
+        recipeName: "",
+        recipeDescription: "",
+        recipeServings: "1",
+        recipePrepTime: "10",
+        recipeCookTime: "10",
+        recipeIngNum1: 1,
+        ingredientMeasure1: "",
+        recipeIngredient1: "",
+        recipeDirections: "",
+        recipeCategory: "breakfast",
+        recipeNumIngredients: 1
+      });
     }
   }
 
