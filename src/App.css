@@ -3,7 +3,7 @@ nav {
   justify-content: center;
   align-items: center;
   min-height: 10vh;
-  background: linear-gradient(to top, #ff9933 0%, #ff3300 100%);
+  background: linear-gradient(to top, #00ff99 0%, #0066cc 100%);
   color: black;
 }
 
@@ -20,7 +20,7 @@ nav {
 }
 
 header {
-  background: #ff9933;
+  background: #00ff99;
   max-height: 10vh;
   display: flex;
   flex-direction: column;
@@ -48,7 +48,7 @@ form {
   color: black;
   border-style: solid;
   border-radius: 10px;
-  border-color: #ff3300;
+  border-color: #0066cc;
   border-width: 3px;
   padding-left: 20px;
   padding-right: 20px;
@@ -58,7 +58,7 @@ form {
 
 button {
   border-style: solid;
-  border-color: #ff9933;
+  border-color: #0066cc;
   border-width: 3px;
   background-color: white;
   margin: 10px;
@@ -69,7 +69,7 @@ button {
 }
 
 button:hover {
-  border-color: #ff3300;
+  border-color: #00ff99;
 }
 
 .normalIn,
@@ -81,6 +81,7 @@ select {
   border-radius: 5px;
   width: 35vw;
   height: 25px;
+  border-color: grey;
 }
 
 .shortIn {
@@ -90,6 +91,7 @@ select {
   border-radius: 5px;
   width: 50px;
   height: 25px;
+  border-color: grey;
 }
 
 .medIn {
@@ -99,11 +101,13 @@ select {
   border-radius: 5px;
   width: 90px;
   height: 25px;
+  border-color: grey;
 }
 
 textarea {
   resize: none;
   height: 60px;
+  border-color: grey;
 }
 
 .ingredientRow {
