@@ -26,7 +26,6 @@ class Home extends Component {
   /** Method submitting the form */
   submit = (event) => {
     event.preventDefault();
-    console.log(this.state);
 
     // Checking fields, border is red if empty
     let allGood = true;
@@ -39,32 +38,19 @@ class Home extends Component {
       }
     }
 
-    console.log("All good!!!");
-    console.log(allGood);
-
     // Call to database
     if (allGood) {
+      console.log("Sending to database");
+
       const recipeRef = firebase.database().ref('recipe');
       const recipe = {};
       for (let i in this.state) {
         recipe[i] = this.state[i];
       }
 
-      console.log(recipe);
       recipeRef.push(recipe);
-      this.setState({
-        recipeName: "",
-        recipeDescription: "",
-        recipeServings: "1",
-        recipePrepTime: "10",
-        recipeCookTime: "10",
-        recipeIngNum1: 1,
-        ingredientMeasure1: "",
-        recipeIngredient1: "",
-        recipeDirections: "",
-        recipeCategory: "breakfast",
-        recipeNumIngredients: 1
-      });
+      event.target.reset();
+
     }
   }
 
