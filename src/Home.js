@@ -42,7 +42,7 @@ class Home extends Component {
     if (allGood) {
       console.log("Sending to database");
 
-      const recipeRef = firebase.database().ref('recipe');
+      const recipeRef = firebase.database().ref(this.state.recipeCategory);
       const recipe = {};
       for (let i in this.state) {
         recipe[i] = this.state[i];
