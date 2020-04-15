@@ -13,15 +13,25 @@ class Breakfast extends Component {
 
     let ref = firebase.database().ref('breakfast');
     ref.on('value', snapshot => {
-      const state = snapshot.val();
-      this.setState(state);
-      console.log(state);
+      const s = snapshot.val();
+
+      //this.setState({ recipes: s });
+
+      for (let i in s) {
+        this.setState({ recipes: s[i] });
+        //console.log(i);
+        //console.log(s[i]);
+      }
     });
-    //console.log(ref);
-    //console.log(this.state);
+
+    setTimeout(function () {
+      console.log("State afterwards");
+      console.log(this.state.recipes);
+    }, 5000);
   }
 
   render() {
+    setTimeout(function () { }, 3000);
     return (
       <div className="main">
         <header className="header">
@@ -29,7 +39,9 @@ class Breakfast extends Component {
         </header>
         <div className="body">
           <p>Hi from Breakfast.</p>
-          
+          {this.state && this.state.recipes !== null &&
+            <p>"Hi"</p>
+          }
         </div>
 
       </div>
