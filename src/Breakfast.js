@@ -5,7 +5,9 @@ import firebase from './firebase.js';
 class Breakfast extends Component {
   constructor(props) {
     super(props)
-    this.state = {};
+    this.state = {
+      recipes: []
+    };
   }
 
   componentDidMount() {
@@ -14,24 +16,25 @@ class Breakfast extends Component {
     let ref = firebase.database().ref('breakfast');
     ref.on('value', snapshot => {
       const s = snapshot.val();
-
-      //this.setState({ recipes: s });
-
+      let recipeArray = [];
       for (let i in s) {
-        this.setState({ recipes: s[i] });
-        //console.log(i);
-        //console.log(s[i]);
+        recipeArray.push(s[i]);
       }
+      this.setState({ recipes: recipeArray })
     });
+  }
 
-    setTimeout(function () {
-      console.log("State afterwards");
-      console.log(this.state.recipes);
-    }, 5000);
+  display() {
+    console.log("The current state:");
+    console.log(this.state.recipes);
+    if (this.state.recipes) {
+      return this.state.recipes.recipeDescription;
+    } else {
+      return "<no recipes yet>"
+    }
   }
 
   render() {
-    setTimeout(function () { }, 3000);
     return (
       <div className="main">
         <header className="header">
@@ -39,9 +42,10 @@ class Breakfast extends Component {
         </header>
         <div className="body">
           <p>Hi from Breakfast.</p>
-          {this.state && this.state.recipes !== null &&
-            <p>"Hi"</p>
-          }
+          {this.display()}
+          {this.state.recipes.map((r, i) => (
+            <p key={i.toString()}>{r.recipeName}</p>
+          ))}
         </div>
 
       </div>
