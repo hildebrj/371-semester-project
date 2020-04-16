@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import firebase from './firebase.js';
+import {
+  Container, Col, Card, CardText, CardBody, CardSubtitle, CardHeader
+} from 'reactstrap';
 
 class Breakfast extends Component {
   constructor(props) {
@@ -24,30 +27,40 @@ class Breakfast extends Component {
     });
   }
 
-  display() {
-    console.log("The current state:");
-    console.log(this.state.recipes);
-    if (this.state.recipes) {
-      return this.state.recipes.recipeDescription;
-    } else {
-      return "<no recipes yet>"
+  createRecipeList = (num, rec) => {
+    let ingList = [];
+    for (let i = 1; i <= num; i++) {
+      ingList.push(<CardSubtitle>{rec["recipeIngNum" + i]} {rec["ingredientMeasure" + i]} {rec["recipeIngredient" + i]}</CardSubtitle>);
     }
+    return ingList;
   }
 
   render() {
     return (
       <div className="main">
-        <header className="header">
-          <h1>Breakfast Page!</h1>
-        </header>
-        <div className="body">
-          <p>Hi from Breakfast.</p>
-          {this.display()}
-          {this.state.recipes.map((r, i) => (
-            <p key={i.toString()}>{r.recipeName}</p>
-          ))}
-        </div>
-
+        <Container>
+          <Col sm={{ size: 9, offset: 2 }} md={{ size: 9, offset: 2 }} lg={{ size: 6, offset: 5 }}>
+            <header>Breakfast Page!</header>
+            <div className="body">
+              {this.state.recipes.map((r, i) => (
+                <Card key={i}><CardBody>
+                  <CardHeader tag='h4'>{r.recipeName}</CardHeader>
+                  <CardText>{r.recipeDescription}</CardText>
+                  <CardSubtitle>______________________________</CardSubtitle>
+                  <CardSubtitle>Servings: {r.recipeServings}</CardSubtitle>
+                  <CardSubtitle>Prep Time: {r.recipePrepTime} mins</CardSubtitle>
+                  <CardSubtitle>Cook Time: {r.recipeCookTime} mins</CardSubtitle>
+                  <CardSubtitle>______________________________</CardSubtitle>
+                  <CardSubtitle>Ingredients ({r.recipeNumIngredients}):</CardSubtitle>
+                  {this.createRecipeList(r.recipeNumIngredients, r)}
+                  <CardSubtitle>______________________________</CardSubtitle>
+                  <CardSubtitle>Directions:</CardSubtitle>
+                  <CardText>{r.recipeDirections}</CardText>
+                </CardBody></Card>
+              ))}
+            </div>
+          </Col>
+        </Container>
       </div>
     );
   }

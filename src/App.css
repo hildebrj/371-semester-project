@@ -5,14 +5,12 @@ nav {
   min-height: 10vh;
   background: linear-gradient(to top, #00ff99 0%, #0066cc 100%);
   color: black;
+  width: 100%;
 }
 
 .nav-links {
-  width: 50%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
+  color: black;
+  font-weight: bold;
 }
 
 .main {
@@ -20,14 +18,14 @@ nav {
 }
 
 header {
-  background: #00ff99;
-  max-height: 10vh;
-  display: flex;
+  height: fit-content;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 24px;
+  font-weight: bold;
   color: black;
+  width: 100%;
 }
 
 .body {
@@ -56,16 +54,8 @@ form {
   margin-bottom: 20px;
 }
 
-button {
-  border-style: solid;
-  border-color: #0066cc;
-  border-width: 3px;
-  background-color: white;
+.button {
   margin: 10px;
-  padding: 10px;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 10px;
 }
 
 button:hover {
