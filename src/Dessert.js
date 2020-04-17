@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import firebase from './firebase.js';
 import {
-  Container, Col, Card, CardText, CardBody, CardSubtitle, CardHeader
+  Container, Col, Card, Row, CardText, CardBody, CardSubtitle, CardHeader
 } from 'reactstrap';
 
 class Dessert extends Component {
@@ -39,11 +39,11 @@ class Dessert extends Component {
     return (
       <div className="main">
         <Container>
-          <Col sm={{ size: 9, offset: 2 }} md={{ size: 9, offset: 2 }} lg={{ size: 6, offset: 5 }}>
-            <header>Dessert Page!</header>
+          <header>Dessert Page!</header>
+          <Row>
             <div className="body">
               {this.state.recipes.map((r, i) => (
-                <Card key={i}><CardBody>
+                <Col><Card key={i}><CardBody>
                   <CardHeader tag='h4'>{r.recipeName}</CardHeader>
                   <CardText>{r.recipeDescription}</CardText>
                   <CardSubtitle>______________________________</CardSubtitle>
@@ -56,10 +56,10 @@ class Dessert extends Component {
                   <CardSubtitle>______________________________</CardSubtitle>
                   <CardSubtitle>Directions:</CardSubtitle>
                   <CardText>{r.recipeDirections}</CardText>
-                </CardBody></Card>
+                </CardBody></Card></Col>
               ))}
             </div>
-          </Col>
+          </Row>
         </Container>
       </div>
     );
