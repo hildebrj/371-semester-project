@@ -1,6 +1,6 @@
 nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   min-height: 10vh;
   background: linear-gradient(to top, #00ff99 0%, #0066cc 100%);
@@ -9,6 +9,11 @@ nav {
 }
 
 .nav-links {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
   color: black;
   font-weight: bold;
 }
@@ -46,7 +51,6 @@ form {
   font-size: 16px;
   color: black;
   border-style: solid;
-  border-radius: 10px;
   border-color: #0066cc;
   border-width: 3px;
   padding-left: 20px;
@@ -55,8 +59,15 @@ form {
   margin-bottom: 20px;
 }
 
-.button {
+button {
+  border-style: solid;
+  border-color: #0066cc;
+  border-width: 3px;
+  background-color: white;
   margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 button:hover {
@@ -114,10 +125,11 @@ textarea {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .card {
   margin: 3%;
-  min-width: 20%;
+  min-width: 30%;
   max-width: 45%;
 }
