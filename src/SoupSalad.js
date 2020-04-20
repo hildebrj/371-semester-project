@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import firebase from './firebase.js';
-import {
-  Container, Col, Card, CardText, Row, CardBody, CardSubtitle, CardHeader
-} from 'reactstrap';
 
 class SoupSalad extends Component {
   constructor(props) {
@@ -40,7 +37,7 @@ class SoupSalad extends Component {
   createRecipeList = (num, rec) => {
     let ingList = [];
     for (let i = 1; i <= num; i++) {
-      ingList.push(<CardSubtitle>{rec["recipeIngNum" + i]} {rec["ingredientMeasure" + i]} {rec["recipeIngredient" + i]}</CardSubtitle>);
+      ingList.push(<p>{rec["recipeIngNum" + i]} {rec["ingredientMeasure" + i]} {rec["recipeIngredient" + i]}</p>);
     }
     return ingList;
   }
@@ -48,33 +45,26 @@ class SoupSalad extends Component {
   render() {
     return (
       <div className="main">
-        <Container>
+        <div className="centered">
           <header>Soup and Salad Page!</header>
-          <Row>
-            {this.display()}
-            <div className="body">
-              {this.state.recipes.map((r, i) => (
-                <Col><Card key={i}><CardBody>
-                  <CardHeader tag='h4'>{r.recipeName}</CardHeader>
-                  <CardText>{r.recipeDescription}</CardText>
-                  <CardSubtitle>______________________________</CardSubtitle>
-                  <CardSubtitle>Servings: {r.recipeServings}</CardSubtitle>
-                  <CardSubtitle>Prep Time: {r.recipePrepTime} mins</CardSubtitle>
-                  <CardSubtitle>Cook Time: {r.recipeCookTime} mins</CardSubtitle>
-                  <CardSubtitle>______________________________</CardSubtitle>
-                  <CardSubtitle>Ingredients ({r.recipeNumIngredients}):</CardSubtitle>
-                  {this.createRecipeList(r.recipeNumIngredients, r)}
-                  <CardSubtitle>______________________________</CardSubtitle>
-                  <CardSubtitle>Directions:</CardSubtitle>
-                  <CardText>{r.recipeDirections}</CardText>
-                </CardBody></Card></Col>
-              ))}
-            </div>
-          </Row>
-        </Container>
-      </div>
+          <section className="cards">
+            {this.state.recipes.map((r, i) => (
+              <article className="card" key={i}>
+                <h3>{r.recipeName}</h3>
+                <p>{r.recipeDescription}</p>
+                <p>Servings: {r.recipeServings}</p>
+                <p>Prep Time: {r.recipePrepTime} mins</p>
+                <p>Cook Time: {r.recipeCookTime} mins</p>
+                <p>Ingredients ({r.recipeNumIngredients}):</p>
+                <p>{this.createRecipeList(r.recipeNumIngredients, r)}</p>
+                <p>Directions:</p>
+                <p>{r.recipeDirections}</p>
+              </article>
+            ))}
+          </section>
+        </div>
+      </div >
     );
   }
 }
-
 export default SoupSalad;
