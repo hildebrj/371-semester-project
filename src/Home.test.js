@@ -1,17 +1,17 @@
 import React from 'react';
-//import { render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Home from './Home';
-import Form from './Home';
 import { shallow, mount } from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
 
+//Check all fields
 describe('<Home />', () => {
   it('initial form fields are empty', () => {
     const wrapper = shallow(<Home />);
-  
+
     expect(wrapper.state('recipeName').length).toBe(0);
     expect(wrapper.state('recipeDescription').length).toBe(0);
     expect(wrapper.state('recipeServings').length).toBe(1);
@@ -40,6 +40,11 @@ describe('<Home />', () => {
       recipeCategory: "breakfast",
       recipeNumIngredients: 1
     });
-
   });
+});
+
+//Test that the header is rendered when the page is
+test("Home header", () => {
+  const { getByText } = render(<Home />);
+  getByText("Welcome to the Community Cookbook!")
 });
