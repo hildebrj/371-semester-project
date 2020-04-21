@@ -32,6 +32,25 @@ class Breakfast extends Component {
     return ingList;
   }
 
+  deleteRecipeListing = (event) => {
+    console.log("deleting");
+
+    let ref = firebase.database().ref('breakfast');
+    let key;
+
+    ref.on('value', snapshot => {
+      const s = snapshot.val();
+
+      for (let i in s) {
+        if (s[i].recipeName === this.state.recipes[event.target.id].recipeName) {
+          key = i;
+        }
+      }
+    });
+
+    ref = firebase.database().ref('breakfast').child(key).remove();
+  }
+
   render() {
     return (
       <div className="main">
@@ -49,6 +68,7 @@ class Breakfast extends Component {
                 <p>{this.createRecipeList(r.recipeNumIngredients, r)}</p>
                 <p>Directions:</p>
                 <p>{r.recipeDirections}</p>
+                <button id={i} onClick={this.deleteRecipeListing}>Delete</button>
               </article>
             ))}
           </section>

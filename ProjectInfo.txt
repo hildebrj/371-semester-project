@@ -1,0 +1,26 @@
+Julia Hildebrand
+
+This project is designed to be a recipe book where anyone 
+can create and submit their favorite recipes. Users may also
+view all recipes by category which can be seen in a nav bar.
+
+Although I had very little experience with Firebase, I chose it
+as my backend. This took quite a bit of time due to my lack
+of experience.
+
+For the layout, simple css queries were used with the exception
+of the nav bar which uses Reactstrap. Reactstrap was not 
+working well with the other pages, so it was removed from 
+the general layout. I was unfamiliar with how to add traditional
+Bootstrap to a React project.
+
+In terms of Ajax functionality, new recipes are saved in state
+before submitted to the database. When routing to a new page in 
+the site, an initial fetch from the database is performed.
+
+Unit tests was something I really struggled with. I only knew
+how to write tests for the MVC setup, which this project does
+not have. I didn't know how to test the functionality. The more
+I reasearched, I realized that I had to use something called 
+Enzyme to test React. Another component I do not understand.
+So yes, there are some tests. But no, they're not amazing.
